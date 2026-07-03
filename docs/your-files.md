@@ -7,16 +7,10 @@ You will generally copy the instructor file,
 rename it with your alias, and run your version
 **in addition to** the example version.
 
-## Choose Your Name (example: `stellar_analytics`)
+## Choose Your Name (example: `Wendy Miller`)
 
-You may use your real name or any professional alias.
-You are **never required to use your real name**.
 
-Naming rules:
 
-- all lowercase
-- no spaces
-- use underscores as needed
 
 ## 1. Python Files
 
@@ -24,7 +18,7 @@ Copy an example Python file and rename the copy using your alias.
 For example:
 
 ```text
-src/**/app_case.py
+src/**/app_wmiller.py
 src/**/app_stellar_analytics.py
 ```
 
@@ -36,11 +30,11 @@ Verify that your command runs your code.
 For example:
 
 ```shell
-uv run python -m bizintel.app_case
+uv run python -m bizintel.app_wmiller
 uv run python -m bizintel.app_stellar_analytics
 ```
 
-The exact package name and script name depend on the project.
+
 
 ## 3. Data Files
 
@@ -79,3 +73,7 @@ as you develop your custom project.
 You may choose your own datasets.
 For accountability and to earn maximum credit:
 code **filenames** should include **your alias**.
+
+##Successfull Outcome
+![alt text](AvrSaleByCategory.png)
+![alt text](AvrSaleByRegion.png)

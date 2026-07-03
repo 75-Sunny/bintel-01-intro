@@ -21,25 +21,10 @@ to get the example projects running on your machine.
 
 ---
 
-## Phase 4. Technical Modification
 
-Describe your small technical modification to the example project.
 
-Include:
+## Phase 5. Custom Project
 
-- What you changed
-- Why you chose that change
-- How you verified that it worked
-- What result, output, chart, metric, or behavior confirmed the change
-
-Compared with the example project,
-explain what is different and why the change matters.
-
-Was it easy, or surprisingly challenging and why do you think so?
-
-## Phase 5. Custom Project (OPTIONAL in Module 1)
-
-Describe your first exploration of the smart sales data.
 
 ### Basis and Data
 
@@ -48,6 +33,10 @@ Describe the raw data files in `data/raw/`.
 Include:
 
 - The three data files and what each contains
+  - customers_data.csv fields - CustomerID,Name,Region,JoinDate
+  - products_data.csv fields - ProductID,ProductName,Category,UnitPrice
+  - sales_data.csv fields - TransactionID,SaleDate,CustomerID,ProductID,StoreID,CampaignID,SaleAmount
+  -
 - The data source and how it was generated
 - Any data quality issues you noticed
 - Any important limitations or assumptions

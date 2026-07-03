@@ -6,19 +6,35 @@
 
 > Professional Python project: introducing business intelligence and smart sales data.
 
-## Project Description
 
-This project introduces business intelligence (BI) and
-data-driven decision making (DDDM).
+# Project Description
 
-We work with a realistic smart sales dataset containing
-customers, products, and sales records.
+## Business Problem
 
-We learn to:
+The original project analyzed **total sales by region** and **total sales by product category** to identify which regions and product categories generated the most revenue.
 
-- load raw business data from CSV files
-- visualize sales by region and product category
-- think in terms of KPIs and actionable business insights
+For this custom project, the focus was changed to answer a different business question:
+
+**Which regions and product categories have the highest average sale amount per transaction?**
+
+Average transaction value provides insight into customer spending behavior rather than overall sales volume. This helps identify where customers make larger purchases, even if those regions or product categories do not generate the highest total revenue.
+
+## Project Modifications
+
+The following changes were made to the original application:
+
+* Renamed the analysis functions to reflect the new purpose.
+* Changed the aggregation method from `.sum()` to `.mean()` to calculate the average sale amount per transaction.
+* Updated the Region visualization from **Total Sales by Region** to **Average Sale Amount per Transaction by Region**.
+* Updated the Product Category visualization from **Total Sales by Product Category** to **Average Sale Amount per Transaction by Product Category**.
+* Updated chart titles, axis labels, log messages, and documentation to reflect the new analysis.
+
+## Business Value
+
+This analysis helps identify where customers spend the most money during individual purchases instead of simply identifying where the highest overall sales occur. Understanding average transaction value can support business decisions related to pricing strategies, promotions, merchandising, and customer purchasing behavior.
+
+
+
 
 ## Working Files
 
@@ -30,167 +46,8 @@ You'll work with these areas:
 - **pyproject.toml** - update authorship & links
 - **zensical.toml** - update authorship & links
 
-## Instructions (pro-analytics-02)
-
-Follow the
-[step-by-step workflow guide](https://denisecase.github.io/pro-analytics-02/workflow-b-apply-example-project/)
-to complete:
-
-1. Phase 1. **Start & Run**
-2. Phase 2. **Change Authorship**
-3. Phase 3. **Read & Understand**
-4. Phase 4. **Modify**
-5. Phase 5. **Apply** <mark>(optional for Module 1)</mark>
-
-**Completing Phases 1-4 is the goal for Module 1.**
-Phase 5 is optional in Module 1.
-If your environment is working well and you still have some time, you might try it.
-
-## Challenges
-
-Challenges are expected.
-Sometimes instructions may not quite match your operating system.
-When issues occur, share screenshots, error messages, and details about what you tried.
-Working through issues is part of implementing professional projects.
-
-## Success
-
-After completing Phase 1. **Start & Run**,
-you'll have your own GitHub project,
-and running the example module will print out:
-
+## Run script
 ```shell
-========================
-Executed successfully!
-========================
+uv run python -m bizintel.app_wmiller
+uv run python -m bizintel.app_stellar_analytics
 ```
-
-A new file `project.log` will appear in the root project folder.
-
-## Command Reference
-
-<details>
-<summary>Show command reference</summary>
-
-### In a machine terminal (open in your `Repos` folder)
-
-After you get a copy of this repo in your own GitHub account,
-open a machine terminal in your `Repos` folder:
-
-```shell
-# Replace username with YOUR GitHub username.
-git clone https://github.com/75-Sunny/bintel-01-intro
-
-cd bintel-01-intro
-code .
-```
-
-### In a VS Code terminal
-
-These are listed for convenience.
-For best results, follow the detailed instructions in
-[pro-analytics-02 guide](https://denisecase.github.io/pro-analytics-02/).
-
-```shell
-uv self update
-uv python pin 3.14
-uv lock --upgrade
-uv sync --extra dev --extra docs --upgrade
-
-uvx pre-commit install
-uvx pre-commit autoupdate
-
-# git add all files and auto fix them as much as possible while working
-git add -A
-uvx pre-commit run --all-files
-# repeat if changes were made
-uvx pre-commit run --all-files
-
-# run the example module
-uv run python -m bizintel.app_case
-
-# run common chores: format, lint, run checks and tests...
-uv run ruff format .
-uv run ruff check . --fix
-uv run python -m pyright
-uv run python -m pytest
-uv run python -m zensical build
-
-# save progress after every major change (customize the commit message)
-git add -A
-git commit -m "update"
-git push -u origin main
-```
-
-</details>
-
-## Notes
-
-- Use the **UP ARROW** and **DOWN ARROW** in the terminal to scroll through past commands.
-- Use `CTRL+f` to find (and replace) text within a file.
-- You do not need to add to or modify `tests/`. They are provided for example only.
-- Many files are silent helpers. Explore as you like, but nothing is required.
-- You do NOT need to understand everything; understanding builds naturally over time.
-
-## Troubleshooting >>>
-
-If you see something like this in your terminal: `>>>` or `...`
-You accidentally started Python interactive mode.
-It happens.
-Press `Ctrl+c` (both keys together) or `Ctrl+Z` then `Enter` on Windows.
-
-## Example Output (Remove this Section after You Verify)
-
-```shell
-| INFO | BI | ========================
-| INFO | BI | SUMMARY
-| INFO | BI | ========================
-| INFO | BI | Customers:  201 rows, 4 columns
-| INFO | BI | Products:   100 rows, 4 columns
-| INFO | BI | Sales:      2001 rows, 7 columns
-| INFO | BI | ========================
-| INFO | BI | ANALYST NOTES:
-| INFO | BI | Note any data quality issues.
-| INFO | BI | We will clean data later.
-| INFO | BI | ========================
-| INFO | BI | CALL a function to show charts........
-| INFO | BI | Workflow complete
-| INFO | BI | CLOSE chart windows to continue.
-| INFO | BI | Terminate this process with CTRL+c as needed.
-| INFO | BI | ========================
-| INFO | BI | Executed successfully!
-| INFO | BI | ========================
-```
-
-## Findings and Visuals
-
-Take screenshots of your charts and provide them here with a discussion.
-In Markdown, display a figure using:
-an exclamation mark immediately followed by square brackets containing a useful caption
-immediately followed by parentheses containing the relative path to your figure.
-
-In your custom project:
-
-- your figures and narrative should reflect your work
-- this `README.md` should include your commands, process, and visuals
-- `docs/index.md` should include your narrative
-
-Replace these placeholders with screenshots from your own project run:
-
-![Total Sales by Region](./docs/images/Figure_1.png)
-
-![Total Sales by Product Category](./docs/images/Figure_2.png)
-
-## Project Documentation
-
-Additional project instructions, terms, and notes:
-
-[docs/index.md](docs/index.md)
-
-## Citation
-
-[CITATION.cff](./CITATION.cff)
-
-## License
-
-[MIT](./LICENSE)

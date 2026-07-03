@@ -2,8 +2,8 @@
 
 An example of loading and visualizing raw business data.
 
-Author: Denise Case
-Date: 2026-06
+Author: Wendy Miller
+Date: 2026-07
 
 Process:
     - Load raw CSV data files.
@@ -60,15 +60,15 @@ SALES_FILE: Final[Path] = DATA_RAW / "sales_data.csv"
 
 # Define a reusable function that takes
 # the customers and sales DataFrames as input
-# and returns a DataFrame with total sales by region.
+# and returns a DataFrame with average sales by region.
 # A pandas DataFrame is like a sheet - two-dimensional data with rows and columns.
 
 
-def sales_by_region(
+def average_sale_by_region(
     df_customers: pd.DataFrame,
     df_sales: pd.DataFrame,
 ) -> pd.DataFrame:
-    """Aggregate total sales amount by customer region.
+    """Average sale amount per transaction by customer region.
 
     Args:
         df_customers: Customers DataFrame with CustomerID and Region columns.
@@ -77,7 +77,7 @@ def sales_by_region(
     Returns:
         DataFrame with Region and SaleAmount columns, sorted by SaleAmount.
     """
-    LOG.info("Aggregating sales by region")
+    LOG.info("Calculating average sale amount per transaction by region")
 
     # Make a copy of the sales DataFrame to avoid modifying the original
     df_sales = df_sales.copy()
@@ -97,10 +97,10 @@ def sales_by_region(
     # Clean up the Region column by stripping whitespace and capitalizing each word
     df_merged["Region"] = df_merged["Region"].str.strip().str.title()
 
-    # Group the merged DataFrame by Region and sum the SaleAmount for each region.
+    # Group the merged DataFrame by Region and average of the SaleAmount per transaction for each region.
     # This returns a Series (a single column of values, one per region).
     # We cast to Series because we are grouping a single column.
-    grouped: pd.Series = pd.Series(df_merged.groupby("Region")["SaleAmount"].sum())
+    grouped: pd.Series = pd.Series(df_merged.groupby("Region")["SaleAmount"].mean())
 
     # Reset the index to turn the Series back into a DataFrame with two columns:
     # Region and SaleAmount.
@@ -123,12 +123,12 @@ def sales_by_region(
     # as a float.
     top_sales: float = float(df_region.iloc[0]["SaleAmount"])
 
-    # Log the top region and its total sales amount for quick reference
+    # Log the top region and its average sales amount for quick reference
     # Using handy dandy f-strings (formatted string literals).
     # Format the sales amount as currency with commas and two floating decimal places.
-    LOG.info(f"  Top region: {top_region} (${top_sales:,.2f})")
+    LOG.info(f"  Highest average transaction value: {top_region} (${top_sales:,.2f})")
 
-    LOG.info("Returning DataFrame with total sales by region")
+    LOG.info("Returning DataFrame with average sale per transaction by region")
     return df_region
 
 
@@ -136,15 +136,15 @@ def sales_by_region(
 
 # Define a reusable function that takes
 # the products and sales DataFrames as input
-# and returns a DataFrame with total sales by category.
+# and returns a DataFrame with average sale per transaction by category.
 # A pandas DataFrame is like a sheet - two-dimensional data with rows and columns.
 
 
-def sales_by_category(
+def average_sale_by_category(
     df_products: pd.DataFrame,
     df_sales: pd.DataFrame,
 ) -> pd.DataFrame:
-    """Aggregate total sales amount by product category.
+    """Calculate the average sale amount per transaction by product category.
 
     WHY: Product category is another key business dimension.
     Understanding which categories drive revenue helps prioritize
@@ -157,7 +157,9 @@ def sales_by_category(
     Returns:
         DataFrame with Category and SaleAmount columns, sorted by SaleAmount.
     """
-    LOG.info("Aggregating sales by product category")
+    LOG.info(
+        "Calculating average sale amount per transaction sales by product category"
+    )
 
     # Make a copy of the sales DataFrame to avoid modifying the original
     df_sales = df_sales.copy()
@@ -177,7 +179,7 @@ def sales_by_category(
     # Group the merged DataFrame by Category and sum the SaleAmount for each category.
     # This returns a Series (a single column of values, one per category).
     # We cast to Series because we are grouping a single column.
-    grouped: pd.Series = pd.Series(df_merged.groupby("Category")["SaleAmount"].sum())
+    grouped: pd.Series = pd.Series(df_merged.groupby("Category")["SaleAmount"].mean())
 
     # Reset the index to turn the Series back into a DataFrame with two columns:
     # Category and SaleAmount.
@@ -199,7 +201,7 @@ def sales_by_category(
     # as a float.
     top_sales: float = float(df_category.iloc[0]["SaleAmount"])
 
-    # Log the top category and its total sales amount for quick reference
+    # Log the top category and its average sale amount per transaction for quick reference
     # Using handy dandy f-strings (formatted string literals).
     # Format the sales amount as currency with commas and two floating decimal places.
     LOG.info(f"  Top category: {top_category} (${top_sales:,.2f})")
@@ -288,30 +290,30 @@ def main() -> None:
     df_sales = load_data(SALES_FILE, "sales")
 
     LOG.info("CALL a function to get sales by region........")
-    df_region = sales_by_region(df_customers, df_sales)
+    df_region = average_sale_by_region(df_customers, df_sales)
 
     LOG.info("CALL a function to plot sales by region........")
     plot_bar(
         df=df_region,
         x="Region",
         y="SaleAmount",
-        title="Total Sales by Region",
+        title="Average Sale per Transaction by Region",
         xlabel="Region",
-        ylabel="Total Sales Amount ($)",
+        ylabel="Average Transaction Amount ($)",
         palette="Blues_d",
     )
 
     LOG.info("CALL a function to get sales by product category........")
-    df_category = sales_by_category(df_products, df_sales)
+    df_category = average_sale_by_category(df_products, df_sales)
 
     LOG.info("CALL a function to plot sales by product category........")
     plot_bar(
         df=df_category,
         x="Category",
         y="SaleAmount",
-        title="Total Sales by Product Category",
+        title="Average Sale Amount per Transaction by Product Category",
         xlabel="Category",
-        ylabel="Total Sales Amount ($)",
+        ylabel="Average Transaction Amount ($)",
         palette="Greens_d",
     )
 
@@ -327,6 +329,8 @@ def main() -> None:
     LOG.info("========================")
     LOG.info("Executed successfully!")
     LOG.info("========================")
+    LOG.info("P1: BI Intro & Engage Phase 5 Custom Project")
+    LOG.info("Custom Log Entry added by Wendy Miller")
 
 
 # === CONDITIONAL EXECUTION GUARD ===
