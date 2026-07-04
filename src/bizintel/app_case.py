@@ -327,6 +327,8 @@ def main() -> None:
     LOG.info("========================")
     LOG.info("Executed successfully!")
     LOG.info("========================")
+    LOG.info("P1:BI Intro Engage Phase 4 Make a Technical Modification")
+    LOG.info("Custom Log Entry added by Wendy Miller")
 
 
 # === CONDITIONAL EXECUTION GUARD ===

@@ -38,8 +38,9 @@ Include:
   - sales_data.csv fields - TransactionID,SaleDate,CustomerID,ProductID,StoreID,CampaignID,SaleAmount
   -
 - The data source and how it was generated
-- Any data quality issues you noticed
-- Any important limitations or assumptions
+- Any data quality issues you noticed - It is hard to see any quality issues with a flat file. Although I did notice a '?' on line 22 in the sales_data.csv
+- Also some formatting issues in the Regions field in the customer_data.csv file this could cause errors with results if not handled properly with code.
+- Any important limitations or assumptions - these files do not have a very large amount of data so the results could be skewed by only looking at a very small set of the overall data.
 
 ### Business Questions
 
@@ -47,20 +48,12 @@ Describe what you observed and what questions the data raises.
 
 Include:
 
-- What the most common customer region appears to be
-- What the highest and lowest product prices appear to be
+- What the most common customer region appears to be East region seemed to be the most common
+- What the highest and lowest product prices appear to be Electronics and Clothing
 - What data quality issues you noticed
 - What business questions you would want to answer with this data
-
+One question I wanted to answer with the data is "what is the AVERAGE amount per transaction spent for Regions and Category?" This gives insight to financial demographiic of the customer and how much they were spending at one time. Another question is 'How many of these customers are New vs Repeat?"
 ### Summary
 
-Summarize your first look at the smart sales data.
-
-Include:
-
-- How you explored the data (VS Code, Excel, Python, or other)
-- What surprised you
-- What you learned about the data preparation work ahead
-- What kinds of real business problems this data could help answer
 
 Display at least one screenshot showing your work.
