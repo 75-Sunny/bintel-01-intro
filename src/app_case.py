@@ -327,9 +327,11 @@ def main() -> None:
     LOG.info("CLOSE chart windows to continue.")
     LOG.info("Terminate this process with CTRL+c as needed.")
     LOG.info("========================")
+    LOG.info("P1: BI Intro & Engage Phase 4 Make a Technical Modification")
+    LOG.info("Custom Log Entry added by Wendy Miller")
     LOG.info("Executed successfully!")
     LOG.info("========================")
-    LOG.info("P1: BI Intro & Engage Phase 5 Custom Project")
+    LOG.info("P1: BI Intro & Engage Phase 4 Make a Technical Modification")
     LOG.info("Custom Log Entry added by Wendy Miller")
 
 
